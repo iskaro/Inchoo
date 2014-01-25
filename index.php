@@ -1,74 +1,50 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
 
-// korisnički upit
-$rows = 10;
-$columns = 10;
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+		<title>index</title>
+		<meta name="description" content="">
+		<meta name="author" content="Ivan">
 
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
-// kreiram tablicu
-$table = array();
-for ($i = 1; $i <= $rows; $i++) {
-	array_push($table, array());
-	for ($k = 1; $k <= $columns; $k++) {
-		array_push($table[$i-1], "X");
-	}
-}
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	</head>
 
-// brojači
-$count = 1;
-$count_left = 0;
-$count_up = 0;
-$count_right = 0;
-$count_down = 0;
-$max_count = $rows * $columns;
+	<body>
+		<div>
+			<header>
+				<h1>index</h1>
+			</header>
+			<nav>
+				<p>
+					<a href="/">Home</a>
+				</p>
+				<p>
+					<a href="/contact">Contact</a>
+				</p>
+			</nav>
 
-// glavna petlja
-while ($count <= $max_count) {
-	// idem lijevo
-	for ($i = 1; $i <= $columns-$count_up-$count_down; $i++) {
-		$table[$rows-1-$count_left][$columns-$i-$count_down] = $count;
-		$count++;
-	}
-	$count_left++;
-	if ($count > $max_count) {
-		break;
-		}
-	// idem gore
-	for ($i = 1; $i <= $rows-$count_left-$count_right; $i++) {
-		$table[$rows-$count_left-$i][$columns-$columns+$count_up] = $count;
-		$count++;
-	}
-	$count_up++;
-	if ($count > $max_count) {
-		break;
-		}
-	// idem desno
-	for ($i = 1; $i <= $columns-$count_up-$count_down; $i++) {
-		$table[$rows-$rows+$count_right][$columns-$columns-1+$i+$count_left] = $count;
-		$count++;
-	}
-	$count_right++;
-	if ($count > $max_count) {
-		break;
-		}
-	// idem dolje
-	for ($i = 1; $i <= $rows-$count_left-$count_right; $i++) {
-		$table[$rows-$rows-1+$i+$count_up][$columns-1-$count_down] = $count;
-		$count++;
-	}
-	$count_down++;
-	if ($count > $max_count) {
-		break;
-		}
-}
-// ispis tablice
-echo "<table border='4'>";
-for ($i = 1; $i <= $rows; $i++) {
-	echo("<tr>");
-	for ($k = 1; $k <= $columns; $k++) {
-		echo("<td>" . $table[$i-1][$k-1] . "</td>");
-	}
-}
+			<div>
+				<p>
+					<?php
+						include('calculate.php');
+					?>
+				</p>
+			</div>
 
-?>
+			<footer>
+				<p>
+					&copy; Copyright  by Ivan
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
