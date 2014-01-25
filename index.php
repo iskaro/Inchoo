@@ -1,8 +1,8 @@
 <?php
 
 // korisnički upit
-$rows = 5;
-$columns = 5;
+$rows = 10;
+$columns = 10;
 
 
 
