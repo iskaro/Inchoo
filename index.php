@@ -19,32 +19,15 @@
 	</head>
 
 	<body>
-		<div>
-			<header>
-				<h1>index</h1>
-			</header>
-			<nav>
-				<p>
-					<a href="/">Home</a>
-				</p>
-				<p>
-					<a href="/contact">Contact</a>
-				</p>
-			</nav>
-
-			<div>
-				<p>
-					<?php
-						include('calculate.php');
-					?>
-				</p>
-			</div>
-
-			<footer>
-				<p>
-					&copy; Copyright  by Ivan
-				</p>
-			</footer>
-		</div>
+		<form method="post">
+			<p1>Please input number of rows:</p1>
+			<input type="number" name="rows">
+			<p1>Please input number of columns:</p1>
+			<input type="number" name="columns">
+			<input type="submit" value="Run">
+		</form>
+		<?php
+		include("calculate.php");
+		?>
 	</body>
 </html>
